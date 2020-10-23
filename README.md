@@ -1,7 +1,4 @@
-# TenStepstoAutomateContainerSecurity-Pt1
-
-# AutomateContainerSecurityDevPOV
-Automating Container Security Into the CI/CD Pipeline - DEVOPS Point of View
+# Automating Container Security Into the CI/CD Pipeline - DEVOPS Point of View
 
 
 ## Introduction
