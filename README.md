@@ -36,39 +36,39 @@ Although addressing high risk environments and interpreting vulnerability manage
 
 ## End to End Vulnerability and Compliance Management
 
-### End-to-End vulnerability management should follow the Assess, Prioritize, Act and Improve workflow as shown below
+End-to-End vulnerability management should follow the Assess, Prioritize, Act and Improve workflow as shown below
 
-### Key Automation Steps in the CI/CD pipeline include: 
+## Key Automation Steps in the CI/CD pipeline include: 
 
 1. **Build-Phase Vulnerability Scan Triggers**
 
-A. Use plug-ins, extensions, or REST API’s to enforce scanning during image builds to catch vulnerable images early in the pipeline. For example, NeuVector provides a Jenkins plug-in, CircleCI ORB, Azure DevOps extensions, REST API and other ways to force build-phase scans. Images can also be annotated with the developer or team responsible to make alerting or reporting easier.
+* Use plug-ins, extensions, or REST API’s to enforce scanning during image builds to catch vulnerable images early in the pipeline. For example, NeuVector provides a Jenkins plug-in, CircleCI ORB, Azure DevOps extensions, REST API and other ways to force build-phase scans. Images can also be annotated with the developer or team responsible to make alerting or reporting easier.
 
-B. Alerts for critical vulnerabilities discovered should go to the compliance management team and potentially the developer responsible for the image. These can be filtered to only alert and fail the build if there is a fix available for the vulnerability. If the image is annotated with the developer name alerting becomes easier and more accurate. See the section below on Virtual Patching for an overview of how to handle vulnerabilities with no fix available that must be allowed to exist in production.
+* Alerts for critical vulnerabilities discovered should go to the compliance management team and potentially the developer responsible for the image. These can be filtered to only alert and fail the build if there is a fix available for the vulnerability. If the image is annotated with the developer name alerting becomes easier and more accurate. See the section below on Virtual Patching for an overview of how to handle vulnerabilities with no fix available that must be allowed to exist in production.
 
 2. **Automated Registry Scans**
 
-A. Continuously monitor images in each registry being used for staging and production environments. Layered scan results can make it easier for developers to find the vulnerable package or library by examining the build commands for each layer. Images can also be annotated with the developer or team responsible to make alerting or reporting easier.
+* Continuously monitor images in each registry being used for staging and production environments. Layered scan results can make it easier for developers to find the vulnerable package or library by examining the build commands for each layer. Images can also be annotated with the developer or team responsible to make alerting or reporting easier.
 
-B. Alerts can be handled similarly to build-phase scans where only critical vulnerabilities with fixes available are sent to developers for remediation. If the image is annotated with the developer name alerting becomes easier and more accurate. While analyzing and alerting should be automated, some manual processes may be required initially until integration is tested and completed.
+* Alerts can be handled similarly to build-phase scans where only critical vulnerabilities with fixes available are sent to developers for remediation. If the image is annotated with the developer name alerting becomes easier and more accurate. While analyzing and alerting should be automated, some manual processes may be required initially until integration is tested and completed.
 
 3. **Run-time (Production) Scanning & Auditing**
 
-A. Auto-scan all running containers, hosts, and orchestrators. Any new containers, scaled up nodes, or updated orchestrator versions should be immediately scanned.
+* Auto-scan all running containers, hosts, and orchestrators. Any new containers, scaled up nodes, or updated orchestrator versions should be immediately scanned.
 
-B. Run CIS-benchmarks and custom compliance checks continuously.
+* Run CIS-benchmarks and custom compliance checks continuously.
 
-C. Enforce industry compliance requirements such as firewall and segmentation for PCI and other privacy standards. See the sections later in
+* Enforce industry compliance requirements such as firewall and segmentation for PCI and other privacy standards. See the sections later in
 this document on Security Policy as Code, Behavioral Learning, and Network Segmentation for ways to automate compliance for network firewall enforcement.
 
-D. Alerts for critical run-time vulnerabilities with fixes available as
+* Alerts for critical run-time vulnerabilities with fixes available as
 well as certain CIS benchmarks such as containers running as root should be sent to the DevOps team for investigation.
 
 4. **Analyze, Triage and Correlate the *Impact* of Vulnerabilities in Production**
 
-A. Correlate vulnerabilities to images, containers, hosts. Assess which production assets are affected by critical vulnerability and compliance issues.
+* Correlate vulnerabilities to images, containers, hosts. Assess which production assets are affected by critical vulnerability and compliance issues.
 
-B. Implement ‘Virtual Patching’ to mitigate production risks.
+* Implement ‘Virtual Patching’ to mitigate production risks.
 
 C. Alerts on unprotected assets with critical vulnerabilities should be sent to DevOps and security teams. Assets which have virtual patching applied can be downgraded or lowered in priority because they present a lower exploit risk.
 
